@@ -23,6 +23,22 @@
                             placeholder="Brand Id"/>
                         </div>
                     </div>
+
+                    <form [formGroup]="carAddForm">
+                        <!-- <label for="filterText2" class="form-label">Araba ara</label>
+    <input type="text" [(ngModel)]="filterText2" class="form-control" id="filterText2" placeholder="Aranacak Kelime"> -->
+                        <select formControlName="brandId">
+                          <option *ngFor="let brand of brands" [ngValue]="brand.id">
+                            {{ brand.name }}
+                          </option>
+                        </select>
+                      </form>
+
+                  
+                       <p>Form value: {{ carAddForm.value | json }}</p>
+                       <!-- {state: {name: 'New York', abbrev: 'NY'} } -->
+                        
+
                    <div class="mb-3">
                     <label for="modelYear">modelYear</label>
                     <div class="form-group">

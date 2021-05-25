@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Brand } from '../models/brand';
 import { Car } from '../models/car';
 
 @Pipe({
@@ -13,6 +14,16 @@ export class FilterPipePipe implements PipeTransform {
     :value;
  
   }
+
+//   transform(items: Array<any>, filterText: {[key: string]: any }): Array<any> {
+//     return items.filter(item => {
+//         const notMatchingField = Object.keys(filterText)
+//                                      .find(key => item[key] !== filterText[key]);
+
+//         return !notMatchingField; // true if matches all fields
+//     });
+// }
+
 
 }
 

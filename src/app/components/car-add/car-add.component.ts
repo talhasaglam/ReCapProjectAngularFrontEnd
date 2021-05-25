@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormBuilder,FormControl,Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { BrandService } from 'src/app/services/brand.service';
+import { BrandComponent } from '../brand/brand.component';
 import { CarService } from 'src/app/services/car.service';
+import { Brand } from 'src/app/models/brand';
 
 @Component({
   selector: 'app-car-add',
@@ -11,11 +14,16 @@ import { CarService } from 'src/app/services/car.service';
 export class CarAddComponent implements OnInit {
 
   carAddForm:FormGroup;
-  constructor(private formBuilder:FormBuilder,private carService:CarService,private toastrService:ToastrService) { }
+  brands:Brand[]=[];
+  filterText2=""
+
+  constructor(private formBuilder:FormBuilder,private carService:CarService,private toastrService:ToastrService, private brandService:BrandService) { }
 
   ngOnInit(): void {
     this.createCarAddForm();
     //this.add();
+    this.getBrands();
+  
   }
 
   createCarAddForm(){
@@ -53,6 +61,15 @@ export class CarAddComponent implements OnInit {
       this.toastrService.error( "Formunuz eksik","Dikkat")
     }
     }
+
+    getBrands(){
+      this.brandService.getBrands().subscribe((response) => {
+        this.brands= response.data
+        //this.carResponseModel= response
+        //this.products istersen this.products=response.data demek gerekiyor.
+      })
+    }
+
 
 
 }

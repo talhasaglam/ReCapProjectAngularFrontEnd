@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListResponseModel } from '../models/ListResponseModel';
+//Case sensitive durumunu ortadan kaldırmak için hata veriyordu
+import { ListResponseModel } from '../models/listResponseModel';
 import { Brand } from '../models/brand';
 
 @Injectable({
